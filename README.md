@@ -1,3 +1,5 @@
+![](public/bdash_logo_alt.png)
+
 ## Overview
 
 This is an unofficial online version of the multiplayer game, Balderdash. This version of the game is exclusive to **weird words** only (a single category)
