@@ -1,34 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Overview
 
-## Getting Started
+This is an unofficial online version of the multiplayer game, Balderdash. This version of the game is exclusive to **weird words** only (a single category)
 
-First, run the development server:
+In this game, you will be given a rare word which you probably would have never heard of, and you'll try to come up with a convincing definition of this word. In the end of the round, you along with other players will vote on which definition is the most convincing. The player with the most votes will get a point. You also get points for guessing the rare word correctly. The player with the most points at the end of the game wins. Note that there are minor differences between this version and the original game as this version is optimized for playing online.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Please note that not a lot of effort went into creating this app, so if you find a bug or have any suggestions or feedback, please feel free to create an issue. You are welcome to submit a PR as well :)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Rules
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+The game is played in rounds. In the beginning of each round, one of the players is designated as the _dasher_ -- this player will see the word of the round and its definition. The other players will try to come up with a believable definition. Once everyone submits their answers, the dasher will mark words that are close enough to the real definition. Next, players who did not submit the correct definition, will see the true and the made up answers, and they will get to vote for the most believable one. The scores are awarded in the end of each round in the following manner:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+* Players guessing the correct definition get 1 point
+* Players who did not get the right answer but got a vote receive 1 point for each vote
+* The dasher gets 2 points in none of the players guess the right answer
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The player with the most points at the end of the game wins.
 
-## Learn More
+## Playing the game
 
-To learn more about Next.js, take a look at the following resources:
+* This app is "optimised" (yeah, right) for mobile devices
+* You need at least 3 people to play, but ideally you'd play it with 5-7 people.
+* One person needs to set up a game, and they will be able to invite other players to join.
+* Whoever is setting up a game will choose the number of _cycles_ played. Each cycle consists of as many rounds as there are players. For example, if you have 5 players, and you play for 1 cycle, the game will end after everyone has played as the dasher once.
+* The dasher is given the choice to skip a word if they feel that it is not appropriate for whatever reason
+* If only 1 or fewer players do not guess the correct answer, the voting stage will be skipped
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## About
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This app makes use of the following components:
+* [The Phrontistery](https://phrontistery.info/ihlstart.html) dictionary of about 17K rare words
+* [Firebase](https://firebase.google.com/) backend + hosting
+* [NextJS](https://nextjs.org/) frontend
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# TODO
+
+- (DONE) Find the vocabulary - https://phrontistery.info/ihlstart.html
+- (DONE) Find/create a logo
+- (DONE) Design app flow
+- (DONE) Write brief documentation and read up on the rules
+- (DONE) Find a UI framework to use
+- (DONE) Set up icon
+- (DONE) Get started with Firebase
+- Implement
+- Get a domain name
+- Add screenshots + URLs to README
+- Set up CI/CD
+- Add tests
+
+Situations to consider:
+- all players guess the word
+- all but one player guess the word
+- view: player who guessed correctly vs who guessed incorrectly
+- view: dashers vs guessers
+- view: session creator vs joiner
