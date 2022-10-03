@@ -51,6 +51,14 @@ This app makes use of the following components:
 - Set up CI/CD
 - Add tests
 
+Implementation todo list:
+- Create a record with the session ID in the DB (+ # of rounds, creator and current status)
+- Add logic to check that a created session ID does not already exist in the DB
+- Handle scenario where session creator/joiner goes to another page and they want to navigate back (url params?)
+- Add logic to support joiners
+- Add logic to switch game modes from accepting joiners to playing to finished
+- Create a new page for round N (dasher view, guesser view, voting view, results view), maybe use the same address
+
 Situations to consider:
 - all players guess the word
 - all but one player guess the word

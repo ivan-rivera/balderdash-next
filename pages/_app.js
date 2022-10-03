@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import Layout from "../components/layout/Layout";
 import { MantineProvider } from '@mantine/core';
 
 function MyApp({ Component, pageProps }) {

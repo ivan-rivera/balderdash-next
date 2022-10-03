@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/public/test_rare_words.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

@@ -1,28 +1,8 @@
 import Head from 'next/head'
-import { Button, Text, Paper } from '@mantine/core';
-import SessionModal from "../components/SessionModal";
+import { Text, Paper } from '@mantine/core';
+import SessionModal from "../components/modals/SessionModal";
+import SelectionButton from "../components/buttons/SelectionButton";
 import {useState} from "react";
-
-
-const SelectionButton = (props) => {
-    return (
-        <Button
-            onClick={props.onClick}
-            style={{
-                marginLeft: 'auto',
-                marginRight: 'auto',
-                marginTop: '5px',
-                marginBottom: '5px',
-                width: '300px',
-                height: '50px',
-        }}
-            variant="white"
-            color="red.8"
-            radius="md"
-            uppercase
-        >{props.content}</Button>
-    )
-}
 
 export default function Home() {
     const [createOpened, setCreateOpened] = useState(false);
@@ -42,8 +22,8 @@ export default function Home() {
                 </div>
                 <div style={{display: 'flex', flexDirection: 'column'}}>
                     <h1>Menu</h1>
-                    <SelectionButton content="New Game" onClick={() => setCreateOpened(true)}/>
-                    <SelectionButton content="Join Game" onClick={() => setJoinOpened(true)}/>
+                    <SelectionButton content="New Round" onClick={() => setCreateOpened(true)}/>
+                    <SelectionButton content="Join Round" onClick={() => setJoinOpened(true)}/>
                 </div>
                 <br/>
                 <br/>
@@ -59,8 +39,8 @@ export default function Home() {
                         or come up with a convincing definition of one. This game is ideal for a group of 4-8 people!
                     </Text>
                 </Paper>
-                <SessionModal title="Create New Game" opened={createOpened} setOpened={setCreateOpened}/>
-                <SessionModal title="Join Game" join={true} opened={joinOpened} setOpened={setJoinOpened}/>
+                <SessionModal title="Create New Round" opened={createOpened} setOpened={setCreateOpened}/>
+                <SessionModal title="Join Round" join={true} opened={joinOpened} setOpened={setJoinOpened}/>
             </main>
         </div>
     )

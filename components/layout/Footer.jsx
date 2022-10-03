@@ -7,17 +7,24 @@ import {ActionIcon, Anchor} from "@mantine/core";
 import {IconBrandGithub} from "@tabler/icons";
 import { createStyles } from '@mantine/core';
 import Link from 'next/link'
-import AboutModal from "./AboutModal";
-import RulesModal from "./RulesModal";
+import AboutModal from "../modals/AboutModal";
+import RulesModal from "../modals/RulesModal";
+import HelpModal from "../modals/HelpModal";
 
 const useStyles = createStyles((theme, _params, getRef) => ({
     footer: {
+        position: 'relative',
+        bottom: '5px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         justifyItems: 'center',
         marginBottom: '5px',
         paddingTop: '10px',
+        paddingLeft: 'auto',
+        paddingRight: 'auto',
+        textAlign: 'center',
+        width: '100%',
         borderTop: `1px solid ${theme.colors.dark[5]}`,
     },
     refs: {
@@ -42,35 +49,34 @@ const useStyles = createStyles((theme, _params, getRef) => ({
 export default function Footer() {
     const [aboutOpened, setAboutOpened] = useState(false);
     const [rulesOpened, setRulesOpened] = useState(false);
+    const [helpOpened, setHelpOpened] = useState(false);
     const { classes } = useStyles();
+    const anchors = [
+        ["About", setAboutOpened],
+        ["Rules", setRulesOpened],
+        ["Help", setHelpOpened],
+    ]
     return (
         <>
             <AboutModal opened={aboutOpened} setOpened={setAboutOpened}/>
             <RulesModal opened={rulesOpened} setOpened={setRulesOpened}/>
+            <HelpModal opened={helpOpened} setOpened={setHelpOpened}/>
             <footer className={classes.footer}>
                 <div className={classes.refs}>
-                    <Anchor
-                        component="a"
-                        color='dimmed'
-                        key='about'
-                        onClick={() => setAboutOpened(true)}
-                        className={classes.item}
-                    >
-                        About
-                    </Anchor>
-                    <Anchor
-                        component="a"
-                        color='dimmed'
-                        key='about'
-                        onClick={() => setRulesOpened(true)}
-                        className={classes.item}
-                    >
-                        Rules
-                    </Anchor>
+                    {anchors.map((value, index) => {
+                        let [name, setter] = value
+                        return (
+                            <Anchor
+                                component="a"
+                                color="dimmed"
+                                key={index}
+                                className={classes.item}
+                                onClick={() => setter(true)}
+                            >{name}</Anchor>
+                        )})}
                 </div>
                 <ActionIcon className={classes.gh} size='lg' variant='default' radius='xl'>
-                    {/* TODO: redirect to my GH page */}
-                    <Link href="https://github.com">
+                    <Link href="https://github.com/ivan-rivera/balderdash-next">
                         <IconBrandGithub />
                     </Link>
                 </ActionIcon>
