@@ -3,7 +3,7 @@
  */
 
 import React, { useState } from "react";
-import { ActionIcon, Anchor, createStyles } from "@mantine/core";
+import { Text, ActionIcon, Anchor, createStyles } from "@mantine/core";
 import { IconBrandGithub } from "@tabler/icons";
 import Link from "next/link";
 import AboutModal from "../modals/AboutModal";
@@ -89,6 +89,9 @@ export default function Footer() {
             </a>
           </Link>
         </ActionIcon>
+        <Text pt="sm" size="xs" color="dimmed">
+          Version 1.00
+        </Text>
       </footer>
     </>
   );

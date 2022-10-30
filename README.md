@@ -8,6 +8,12 @@ In this game, you will be given a rare word which you probably would have never 
 
 Please note that not a lot of effort went into creating this app, so if you find a bug or have any suggestions or feedback, please feel free to create an issue. You are welcome to submit a PR as well :)
 
+## Screenshots
+
+The below screenshot demonstrates what the game looks like.
+
+![](public/game.png)
+
 ## Rules
 
 The game is played in rounds. In the beginning of each round, one of the players is designated as the _dasher_ -- this player will see the word of the round and its definition. The other players will try to come up with a believable definition. Once everyone submits their answers, the dasher will mark words that are close enough to the real definition. Next, players who did not submit the correct definition, will see the true and the made up answers, and they will get to vote for the most believable one. The scores are awarded in the end of each round in the following manner:
@@ -33,35 +39,3 @@ This app makes use of the following components:
 * [The Phrontistery](https://phrontistery.info/ihlstart.html) dictionary of about 17K rare words
 * [Firebase](https://firebase.google.com/) backend + hosting
 * [NextJS](https://nextjs.org/) frontend
-
-
-
-# TODO
-
-- (DONE) Find the vocabulary - https://phrontistery.info/ihlstart.html
-- (DONE) Find/create a logo
-- (DONE) Design app flow
-- (DONE) Write brief documentation and read up on the rules
-- (DONE) Find a UI framework to use
-- (DONE) Set up icon
-- (DONE) Get started with Firebase
-- Implement
-- Get a domain name
-- Add screenshots + URLs to README
-- Set up CI/CD
-- Add tests
-
-Implementation todo list:
-- Create a record with the session ID in the DB (+ # of rounds, creator and current status)
-- Add logic to check that a created session ID does not already exist in the DB
-- Handle scenario where session creator/joiner goes to another page and they want to navigate back (url params?)
-- Add logic to support joiners
-- Add logic to switch game modes from accepting joiners to playing to finished
-- Create a new page for round N (dasher view, guesser view, voting view, results view), maybe use the same address
-
-Situations to consider:
-- all players guess the word
-- all but one player guess the word
-- view: player who guessed correctly vs who guessed incorrectly
-- view: dashers vs guessers
-- view: session creator vs joiner

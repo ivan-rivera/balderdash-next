@@ -1,64 +1,75 @@
 import { ROUND_STATES } from "../../lib/constants";
-import { Menu, Button, Title, Text } from "@mantine/core";
-import DasherState from "./DahserState";
+import { Text, Title } from "@mantine/core";
+import SelectingState from "./SelectingState";
+import GuessingState from "./GuessingState";
+import VotingState from "./VotingState";
+import ResultState from "./ResultState";
 import cookieCutter from "cookie-cutter";
 
-const scenarioHandler = (round) => {
-  switch (round.state) {
-    case ROUND_STATES.DASHER:
-      return <DasherState dasher={round.dasher} word={round.word} />;
-    case ROUND_STATES.GUESSING:
-      return <div>Guessing</div>;
-    case ROUND_STATES.JUDGING:
-      return <div>Judging</div>;
-    case ROUND_STATES.VOTING:
-      return <div>Voting</div>;
-    case ROUND_STATES.RESULTS:
-      return <div>Results</div>;
-    default:
-      return (
-        <Title style={{ marginTop: "200px", marginBottom: "200px" }}>
-          Loading...
-        </Title>
-      );
-  }
-};
-
-function Scoreboard({ players }) {
-  const scores = Object.entries(players).map(([player, content], index) => [
-    index,
-    player,
-    content.score,
-  ]);
+function Loading() {
   return (
-    <Menu shadow="md" width={300} style={{ marginTop: "auto" }}>
-      <Menu.Target>
-        <Button variant="default" color="gray">
-          Scoreboard
-        </Button>
-      </Menu.Target>
-      <Menu.Dropdown>
-        <Menu.Label>Scoreboard</Menu.Label>
-        {scores.map((content) => {
-          const [index, player, score] = content;
-          return (
-            <Menu.Item key={index}>
-              {player}: {score}
-            </Menu.Item>
-          );
-        })}
-      </Menu.Dropdown>
-    </Menu>
+    <Title style={{ marginTop: "200px", marginBottom: "200px" }}>
+      Loading...
+    </Title>
   );
 }
 
+// TODO: handle what happens in the end of the game
+const scenarioHandler = (id, round, players, isLastRound) => {
+  switch (round.state) {
+    case ROUND_STATES.SELECTING:
+      return (
+        <SelectingState
+          sessionId={id}
+          dasher={round.dasher}
+          word={round.word}
+          roundNumber={round.number}
+        />
+      );
+    case ROUND_STATES.GUESSING:
+      return (
+        <GuessingState
+          sessionId={id}
+          dasher={round.dasher}
+          word={round.word}
+          guesses={round.guesses}
+          roundNumber={round.number}
+        />
+      );
+    case ROUND_STATES.VOTING:
+      return (
+        <VotingState
+          sessionId={id}
+          roundNumber={round.number}
+          guesses={round.guesses}
+          word={round.word}
+          seed={round.seed}
+          dasher={round.dasher}
+        />
+      );
+    case ROUND_STATES.RESULTS:
+      return (
+        <ResultState
+          sessionId={id}
+          players={players}
+          dasher={round.dasher}
+          isLastRound={isLastRound}
+        />
+      );
+    default:
+      return Loading();
+  }
+};
+
 export default function Round({ sessionData }) {
-  const { limit, rounds, players } = sessionData;
+  const { limit, rounds, players, id } = sessionData;
+  if (rounds === undefined) return Loading();
   const latestRound = rounds.at(-1);
+  const isLastRound = latestRound.number == limit;
   return (
     <>
       {latestRound.state != null && (
-        <Title size="h1">
+        <Title size="h1" mt="lg" mb="lg">
           Round {latestRound.number} of {limit}
         </Title>
       )}
@@ -70,19 +81,21 @@ export default function Round({ sessionData }) {
         }}
       >
         {latestRound.dasher === cookieCutter.get("username") ? (
-          <Text color="dimmed">You are the dasher</Text>
+          <Text color="dimmed" mb="xl">
+            You are the dasher
+          </Text>
         ) : (
-          <Text color="dimmed">You are a guesser</Text>
+          <Text color="dimmed" mb="xl">
+            You are a guesser
+          </Text>
         )}
       </div>
-      {scenarioHandler(latestRound)}
+      {scenarioHandler(id, latestRound, players, isLastRound)}
       <div
         style={{
           paddingTop: "80px",
         }}
-      >
-        {latestRound.state != null && <Scoreboard players={players} />}
-      </div>
+      ></div>
     </>
   );
 }

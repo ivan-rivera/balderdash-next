@@ -25,11 +25,11 @@ export default function Home() {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <h1>Menu</h1>
           <SelectionButton
-            content="New Round"
+            content="New Game"
             onClick={() => setCreateOpened(true)}
           />
           <SelectionButton
-            content="Join Round"
+            content="Join Game"
             onClick={() => setJoinOpened(true)}
           />
         </div>

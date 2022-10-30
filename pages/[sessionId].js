@@ -48,6 +48,6 @@ export default function SessionId() {
   useEffect(() => {
     if (!sessionId) return;
     syncSession(sessionId, setSessionData);
-  }, [sessionId]);
+    }, [sessionId]);
   return scenarioHandler(sessionData);
 }

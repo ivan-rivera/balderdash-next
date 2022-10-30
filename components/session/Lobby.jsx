@@ -97,10 +97,10 @@ export default function Lobby({ sessionData }) {
       <Title size="h1" style={{ paddingTop: "20px", paddingBottom: "20px" }}>
         New Game
       </Title>
-      <p>
+      <Text ml="auto" mr="auto" style={{ maxWidth: "350px" }}>
         Invite your friends to join the game via session ID:
         <strong> {id}</strong>
-      </p>
+      </Text>
       <p>New joiners will appear in the below list</p>
       <br />
       <Card shadow="lg" radius="md" withBorder style={cardStyle}>
