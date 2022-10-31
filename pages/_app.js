@@ -1,5 +1,6 @@
 import Layout from "../components/layout/Layout";
 import { MantineProvider } from "@mantine/core";
+import { Analytics } from "@vercel/analytics/react";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -19,6 +20,7 @@ function MyApp({ Component, pageProps }) {
       />
       <Layout>
         <Component {...pageProps} />
+        <Analytics />
       </Layout>
     </MantineProvider>
   );
