@@ -14,7 +14,6 @@ function Loading() {
   );
 }
 
-// TODO: handle what happens in the end of the game
 const scenarioHandler = (id, round, players, isLastRound) => {
   switch (round.state) {
     case ROUND_STATES.SELECTING:

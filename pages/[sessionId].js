@@ -1,17 +1,3 @@
-/**
- * TODO:
- *  - Split into sub components that will change based on state; support states:
- *      - waiting for players to join
- *      - dasher waiting for input
- *      - guessers guessing
- *      - guessers waiting for others
- *      - dasher judging
- *      - guessers voting
- *      - round results
- *      - final results
- *  - Clean up the scoreboard
- */
-
 import { Title } from "@mantine/core";
 import { useRouter } from "next/router";
 import Lobby from "../components/session/Lobby";
@@ -28,8 +14,6 @@ const scenarioHandler = (sessionData) => {
       return <Lobby sessionData={sessionData} />;
     case GAME_STATES.STARTED:
       return <Round sessionData={sessionData} />;
-    case GAME_STATES.FINISHED:
-      return <div>Game finished</div>; // TODO: add logic
     case GAME_STATES.INVALID:
       return <Error message="The session code is invalid!" />;
     default:
@@ -48,6 +32,6 @@ export default function SessionId() {
   useEffect(() => {
     if (!sessionId) return;
     syncSession(sessionId, setSessionData);
-    }, [sessionId]);
+  }, [sessionId]);
   return scenarioHandler(sessionData);
 }
