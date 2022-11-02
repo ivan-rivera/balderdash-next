@@ -46,7 +46,7 @@ function GuesserEntryView({ sessionId, roundNumber }) {
             sessionId,
             roundNumber,
             cookieCutter.get("username"),
-            definition
+            definition.charAt(0).toUpperCase() + definition.slice(1)
           )
         }
       >
@@ -220,6 +220,12 @@ export default function GuessingState({
       );
   }, [word]);
   return cookieCutter.get("username") === dasher
-    ? DasherView(sessionId, word, guesses, roundNumber, definition)
+    ? DasherView(
+        sessionId,
+        word,
+        guesses,
+        roundNumber,
+        definition.charAt(0).toUpperCase() + definition.slice(1)
+      )
     : GuesserView(sessionId, word, guesses, roundNumber);
 }

@@ -90,7 +90,7 @@ export default function Footer() {
           </Link>
         </ActionIcon>
         <Text pt="sm" size="xs" color="dimmed">
-          Version 1.0.7
+          Version 1.0.8
         </Text>
       </footer>
     </>

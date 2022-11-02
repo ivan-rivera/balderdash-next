@@ -18,7 +18,15 @@ const cardStyle = {
 
 function DasherCaption() {
   return (
-    <Text style={{ paddingLeft: paddingSides, paddingRight: paddingSides }}>
+    <Text
+      mr="auto"
+      ml="auto"
+      style={{
+        paddingLeft: paddingSides,
+        paddingRight: paddingSides,
+        maxWidth: "350px",
+      }}
+    >
       Pick a word that you think your friends will have a hard time guessing.
       Everyone can see the word, but only you can see the definition and only
       you can either confirm it or pick a different word. Remember: if no one
@@ -30,7 +38,15 @@ function DasherCaption() {
 
 function GuesserCaption() {
   return (
-    <Text style={{ paddingLeft: paddingSides, paddingRight: paddingSides }}>
+    <Text
+      mr="auto"
+      ml="auto"
+      style={{
+        paddingLeft: paddingSides,
+        paddingRight: paddingSides,
+        maxWidth: "350px",
+      }}
+    >
       The dasher is picking a word. Only the dasher can see the definition.
     </Text>
   );
@@ -96,7 +112,7 @@ export default function SelectingState({
         </Title>
         {isDasher && (
           <Title size="h4" italic>
-            {definition}
+            {definition.charAt(0).toUpperCase() + definition.slice(1)}
           </Title>
         )}
       </Card>

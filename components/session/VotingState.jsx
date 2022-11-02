@@ -396,7 +396,7 @@ export default function VotingState({
   return votingCanProceed
     ? VotingScreen(
         word,
-        definition,
+        definition.charAt(0).toUpperCase() + definition.slice(1),
         seed,
         sessionId,
         roundNumber,
@@ -415,7 +415,7 @@ export default function VotingState({
         roundNumber,
         dasher,
         word,
-        definition,
+        definition.charAt(0).toUpperCase() + definition.slice(1),
         usersWithIncorrectGuesses
       );
 }
