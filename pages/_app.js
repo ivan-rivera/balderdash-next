@@ -1,6 +1,7 @@
 import Layout from "../components/layout/Layout";
 import { MantineProvider } from "@mantine/core";
 import { Analytics } from "@vercel/analytics/react";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -19,6 +20,18 @@ function MyApp({ Component, pageProps }) {
         rel="stylesheet"
       />
       <Layout>
+        <Head>
+          <title>Balderdash!</title>
+          <meta
+            name="description"
+            content="Balderdash the game. Play with your friends, your vocabulary and bluff your way to victory!"
+          />
+          <meta
+            name="keywords"
+            content="balderdash, game, bluff, vocabulary, fictionary"
+          />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         <Component {...pageProps} />
         <Analytics />
       </Layout>

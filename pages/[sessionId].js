@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Error from "../components/errors/Error";
 import { syncSession } from "../lib/firebase";
 import { GAME_STATES } from "../lib/constants";
+import Head from "next/head";
 
 const scenarioHandler = (sessionData) => {
   const state = sessionData === null ? GAME_STATES.INVALID : sessionData.state;
@@ -33,5 +34,5 @@ export default function SessionId() {
     if (!sessionId) return;
     syncSession(sessionId, setSessionData);
   }, [sessionId]);
-  return scenarioHandler(sessionData);
+  return <div>{scenarioHandler(sessionData)}</div>;
 }

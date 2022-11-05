@@ -9,12 +9,6 @@ export default function Home() {
   const [joinOpened, setJoinOpened] = useState(false);
   return (
     <div>
-      <Head>
-        <title>Balderdash</title>
-        <meta name="description" content="Balderdash the game" />
-        <meta name="keywords" content="balderdash" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <main>
         <div>
           <h2 style={{ fontWeight: "bold" }}>Balderdash • /ˈbɔːldədaʃ/</h2>

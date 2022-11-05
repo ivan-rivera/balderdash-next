@@ -7,6 +7,7 @@ import {
   Text,
   Textarea,
   Title,
+  Box,
 } from "@mantine/core";
 import { IconCheck, IconX } from "@tabler/icons";
 import { useEffect, useState } from "react";
@@ -144,24 +145,27 @@ function GuessCard({ guesses }) {
           <SegmentedControl
             ml="auto"
             mr="auto"
+            radius="md"
             disabled={waiting}
-            onChange={(v) => (guesses[user].correct = Boolean(v))}
+            onChange={(v) => (guesses[user].correct = Boolean(parseInt(v)))}
             data={[
               {
                 label: (
                   <Center>
                     <IconX size={25} />
+                    <Box ml={10}>Wrong</Box>
                   </Center>
                 ),
-                value: 0,
+                value: "0",
               },
               {
                 label: (
                   <Center>
                     <IconCheck size={25} />
+                    <Box ml={10}>Right</Box>
                   </Center>
                 ),
-                value: 1,
+                value: "1",
               },
             ]}
           />
