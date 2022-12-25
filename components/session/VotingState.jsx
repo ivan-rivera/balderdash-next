@@ -103,7 +103,6 @@ function Options({
       .map((user) => ({
         owner: user,
         definition: guesses[user].guess,
-        seed: guesses[user].seed,
         votes: guesses[user].hasOwnProperty("votes")
           ? Object.keys(guesses[user].votes)
           : [],
@@ -112,11 +111,10 @@ function Options({
         Array({
           owner: TRUE_DEFINITION,
           definition: definition,
-          seed: seed,
           votes: trueDefinitionVoters,
         })
       ),
-    "seed"
+    "definition"
   );
   return (
     <Stack align="stretch" justify="center">
